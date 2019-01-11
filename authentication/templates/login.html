@@ -1,0 +1,22 @@
+{% extends 'templates/base.html' %}
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Please Login</h1>
+
+        <form method="post" action="{% url 'login:user_login' %}">
+          {% csrf_token %}
+          {# A more "HTML" way of creating the login form#}
+          <label for="username">Username:</label>
+          <input type="text" class="form-control"  name="username" placeholder="Username">
+
+          <label for="password"></label>
+          <input type="password" class="form-control" name="password" placeholder="Password">
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+  </div>
+{% endblock %}
