@@ -29,7 +29,7 @@
         <tr>
             <td>{{ things.item}}</td>
             <td><center>{{things.completed }}</center></td>
-            <td><center>Delete</center></td>
+            <td><center><a href="{% url 'login:delete' things.id %}">Delete</a> </center></td>
     </tr>
 
         {% endfor %}

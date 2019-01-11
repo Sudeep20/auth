@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import UserForm,UserProfileInfoForm,ListForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -23,6 +23,13 @@ def home(request):
     else:
         all_items = List.objects.all()
         return render(request, 'templates/home.html', {'all_items': all_items})
+
+def delete(request, list_id):
+    item = List.objects.get(pk=list_id)
+    item.delete()
+    messages.success(request, 'Item has been deleted')
+    return redirect('home')
+
 
 @login_required
 def special(request):
